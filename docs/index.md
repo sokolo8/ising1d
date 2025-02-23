@@ -25,7 +25,7 @@ $$\ket{GS}=\ket{\rightarrow\rightarrow\rightarrow...\rightarrow\rightarrow\right
 On the other hand, the most excited state in this phase would be the following one:
 
 $$\ket{\leftarrow\leftarrow\leftarrow...\leftarrow\leftarrow\leftarrow}$$
-\\
+
 The model is in a \textbf{ferromagnetic phase}, when $$g<<1$$ or $$g \to 0$$. A ground state of the system has a two-fold degeneracy and it can be one of the following states (or their superposition):
 
 $$\ket{\uparrow\uparrow\uparrow...\uparrow\uparrow\uparrow}, \mathrm{    } \ket{\downarrow\downarrow\downarrow...\downarrow\downarrow\downarrow}$$
