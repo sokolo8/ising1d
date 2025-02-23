@@ -18,7 +18,7 @@ where:
 - $$g$$ is the transverse magnetic field strength.
 - $$\sigma^x_i$$, $$\sigma^z_i$$ spin-1/2 operators associated with site $$i$$ in the direction of $$\hat{x}$$, $$\hat{z}$$ respectively
 
-The model is in a $\textbf{paramagnetic phase}$, when $$g>>1$$. In this case ground state of the system has no degeneracy and it is a state in which all spins are pointing along $$\hat{x}$$:
+The model is in a $\mathbf{paramagnetic\ phase}$, when $$g>>1$$. In this case ground state of the system has no degeneracy and it is a state in which all spins are pointing along $$\hat{x}$$:
 
 $$\ket{GS}=\ket{\rightarrow\rightarrow\rightarrow...\rightarrow\rightarrow\rightarrow}$$
 
