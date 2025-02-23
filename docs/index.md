@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Ising Model Simulation
+title: 1D Ising model simulations
 ---
 
 <script type="text/javascript" async
