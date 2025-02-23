@@ -28,11 +28,11 @@ $$\ket{\leftarrow\leftarrow\leftarrow...\leftarrow\leftarrow\leftarrow}$$
 
 The model is in a \textbf{ferromagnetic phase}, when $$g<<1$$ or $$g \to 0$$. A ground state of the system has a two-fold degeneracy and it can be one of the following states (or their superposition):
 
-$$\ket{\uparrow\uparrow\uparrow...\uparrow\uparrow\uparrow}, \mathrm{    } \ket{\downarrow\downarrow\downarrow...\downarrow\downarrow\downarrow}$$
+$$\ket{\uparrow\uparrow\uparrow...\uparrow\uparrow\uparrow}, \quad \quad \ket{\downarrow\downarrow\downarrow...\downarrow\downarrow\downarrow}$$
 
 On the other hand, the most excited state in this phase would be:
 
-$$\ket{\uparrow\downarrow\uparrow...\downarrow\uparrow\downarrow} \mathrm{or} \ket{\downarrow\uparrow\downarrow...\uparrow\downarrow\uparrow}$$
+$$\ket{\uparrow\downarrow\uparrow...\downarrow\uparrow\downarrow} \quad \mathrm{or} \quad \ket{\downarrow\uparrow\downarrow...\uparrow\downarrow\uparrow}$$
 
 ## Installation
 Run:
