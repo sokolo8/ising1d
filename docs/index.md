@@ -3,6 +3,10 @@ layout: default
 title: Ising Model Simulation
 ---
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+</script>
+
 # 1D Ising Model with Transverse Field
 
 The Hamiltonian of the system is:
