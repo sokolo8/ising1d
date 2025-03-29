@@ -1,7 +1,0 @@
-```yaml
-title: "Quantum Many-Body Systems"
-description: "Numerical simulations of strongly correlated quantum systems."
-theme: jekyll-theme-slate
-
-kramdown:
-  math_engine: mathjax
