@@ -16,3 +16,8 @@ nav:
   - Usage: usage.md
   - Theory: theory.md
   - API Reference: api.md
+
+extra:
+  arithmatex:
+    inline_syntax: ['\\(', '\\)']
+    block_syntax: ['\\[', '\\]']
