@@ -23,8 +23,9 @@ $$
 Using the **Jordan-Wigner transformation**, the model is mapped to a system of **non-interacting fermions**:
 
 $$
-\sigma^x_n = 1 - 2 c^{\dagger}_n c_n,
+\sigma^z_n = -(c_n + c^{\dagger}_n) \prod_{m < n}(1 - 2 c^{\dagger}_m c_m)
 $$
+
 
 This allows the Hamiltonian to be rewritten as a **quadratic fermionic form** that can be diagonalized via a **Bogoliubov transformation**.
 
