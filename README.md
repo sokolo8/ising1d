@@ -60,7 +60,7 @@ This allows the Hamiltonian to be rewritten as a **quadratic fermionic form** th
 
 ## 📄 Documentation
 
-📓 **Notebook version**: [Open on GitHub](./README.ipynb)
+📓 **Notebook version**: [Open on GitHub](./docs/documentation.ipynb)
 
 ---
 
