@@ -1,0 +1,18 @@
+site_name: Your Project Name
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.arithmatex
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - Theory: theory.md
+  - API Reference: api.md

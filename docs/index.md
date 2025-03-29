@@ -1,18 +1,11 @@
----
-title: Quantum Many-Body Systems
----
+# Welcome to My Project
 
-# Quantum Many-Body Systems
+This project simulates quantum systems using numerical methods.
 
-The Schrödinger equation:
+Inline math: \\( E = mc^2 \\)
 
-$$ \hat{H} \Psi = E \Psi $$
+Block math:
 
-The Hamiltonian:
-
-$$ \hat{H} = -\sum_{i} J \sigma_i^z \sigma_{i+1}^z + h \sum_{i} \sigma_i^x $$
-
-## Installation
-Run the following command:
-```bash
-pip install -r requirements.txt
+$$
+\psi(x,t) = A e^{i(kx - \omega t)}
+$$
