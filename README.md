@@ -10,3 +10,5 @@ where:
 
 📘 **Open notebook on GitHub**  
 [View README.ipynb](https://github.com/sokolo8/ising1d/blob/main/README.ipynb)
+
+📄 [View the full documentation (PDF)](docs/ising_model.pdf)
