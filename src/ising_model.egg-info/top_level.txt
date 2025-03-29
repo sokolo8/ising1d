@@ -1,1 +1,1 @@
-
+ising_model

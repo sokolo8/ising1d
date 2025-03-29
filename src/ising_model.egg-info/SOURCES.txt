@@ -1,6 +1,8 @@
 LICENSE
 README.md
 setup.py
+src/ising_model/__init__.py
+src/ising_model/ising_model.py
 src/ising_model.egg-info/PKG-INFO
 src/ising_model.egg-info/SOURCES.txt
 src/ising_model.egg-info/dependency_links.txt
