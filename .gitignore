@@ -1,2 +1,21 @@
-# Ignore virtual environments
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
 .venv/
+
+# Package build artifacts
+build/
+dist/
+*.egg-info/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings (optional)
+.vscode/
