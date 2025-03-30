@@ -61,7 +61,9 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 ## Sample Output
 
-![KZ Scaling Plot](docs/figures/KZ_scaling_plot.svg)
+<p align="center">
+  <img src="figures/KZ_scaling_plot.svg" width="1000">
+</p>
 
 ---
 
