@@ -61,6 +61,15 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 <h2>KZ power-law test</h2>
 
+Transverse field $g$ is changed in time:
+
+$$g(t) =
+\begin{cases}
+2, & \text{if } \frac{t}{\tau_Q} < -\frac{\pi}{2} \\
+3/2 - 1/2 \sin(\frac{t}{\tau_Q}), & \text{if } -\frac{\pi}{2} \leq \frac{t}{\tau_Q} \leq \frac{\pi}{2} \\
+1, & \text{if } \frac{t}{\tau_Q} > \frac{\pi}{2}
+\end{cases}$$
+
 <p align="center">
   <img src="docs/figures/KZ_scaling_plot.svg" width="600">
 </p>
