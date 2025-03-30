@@ -59,10 +59,24 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 ---
 
-<h2>Sample Output</h2>
+<h2>KZ power-law test</h2>
 
 <p align="center">
   <img src="docs/figures/KZ_scaling_plot.svg" width="600">
+</p>
+
+<hr>
+
+<h2>Inhomogeneous vs uniform quenches</h2>
+
+<p align="center">
+  <img src="docs/figures/inhomo_test_lin_plot_1000.svg" width="600">
+</p>
+
+<hr>
+
+<p align="center">
+  <img src="docs/figures/inhomo_test_log_plot_1000.svg" width="600">
 </p>
 
 <hr>
