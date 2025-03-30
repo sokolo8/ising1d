@@ -61,7 +61,7 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 <h2>KZ power-law test</h2>
 
-Transverse field $g$ is changed in time:
+Transverse field $g$ is changed from $g=2$ to $g=1$ in time $\tau_Q$:
 
 $$g(t) =
 \begin{cases}
@@ -69,6 +69,10 @@ $$g(t) =
 3/2 - 1/2 \sin(\frac{t}{\tau_Q}), & \text{if } -\frac{\pi}{2} \leq \frac{t}{\tau_Q} \leq \frac{\pi}{2} \\
 1, & \text{if } \frac{t}{\tau_Q} > \frac{\pi}{2}
 \end{cases}$$
+
+Density of excitations is predicted to scale as:
+
+$$d \sim \tau_Q^{-2/3}$$
 
 <p align="center">
   <img src="docs/figures/KZ_scaling_plot.svg" width="600">
