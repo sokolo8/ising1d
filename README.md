@@ -4,13 +4,13 @@ This repository contains a fast and accurate simulation of the **1D Ising model 
 
 ---
 
-## 📄 Documentation
+## Documentation
 
-📓 **Notebook version**: [Open on GitHub](./docs/documentation.ipynb)
+**Notebook version**: [Open on GitHub](./docs/documentation.ipynb)
 
 ---
 
-## 🧩 Model Overview
+## Model Overview
 
 The Hamiltonian of the system is:
 
@@ -67,13 +67,19 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 <hr>
 
-<h2>Inhomogeneous vs uniform quenches</h2>
+<h2>Spatially dependent ramp</h2>
+
+<p align="center">
+  <img src="docs/figures/inhomo_ramp.svg" width="600">
+</p>
 
 <p align="center">
   <img src="docs/figures/inhomo_test_lin_plot_1000.svg" width="600">
 </p>
 
 <hr>
+
+<h2>Inhomogeneous vs uniform quench</h2>
 
 <p align="center">
   <img src="docs/figures/inhomo_test_log_plot_1000.svg" width="600">
@@ -83,7 +89,7 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 ---
 
-## 📜 License
+## License
 
 MIT License — free to use, cite, and modify. Feel free to build on it!
 

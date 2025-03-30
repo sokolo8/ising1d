@@ -4,18 +4,16 @@
 # Python
 __pycache__/
 *.py[cod]
-*.so
 
-# Virtual environment
+# Virtual environments
 .venv/
+env/
 
-# Package build artifacts
+# Packaging
 build/
 dist/
 *.egg-info/
 
-# Jupyter notebooks checkpoints
-.ipynb_checkpoints/
-
-# VSCode settings (optional)
-.vscode/
+# Logs or temp data
+*.log
+*.tmp

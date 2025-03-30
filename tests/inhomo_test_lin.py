@@ -1,4 +1,4 @@
-from ising_model import Ising
+from ising_model.ising_model import Ising
 import json
 import numpy as np
 import multiprocessing
