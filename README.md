@@ -7,6 +7,7 @@ This repository contains a fast and accurate simulation of the **1D Ising model 
 ## 📄 Documentation
 
 📓 **Notebook version**: [Open on GitHub](./docs/documentation.ipynb)
+
 ---
 
 ## 🧩 Model Overview
@@ -60,7 +61,7 @@ This approach allows us to work with $2L \times 2L$ matrices, instead of $2^L \t
 
 ## Sample Output
 
-![KZ Scaling Plot](plots/KZ_scaling_plot.pdf)
+![KZ Scaling Plot](docs/figures/KZ_scaling_plot.svg)
 
 ---
 
