@@ -99,7 +99,7 @@ class Ising:
         self.final_H = self.External_field_Matrix * self.g_f + self.Couplings_Matrix_X
         self.final_spectrum, self.final_state = eigsh(self.final_H, k=self.N, which='LA')
 
-        # Compute the final state in {u, v} representation
+        # Switch back to {u, v} representation
 
         final_state_uv = self.Basis_EFM @ self.final_state
 
@@ -148,7 +148,7 @@ class Ising:
             diagonal_matrix_rotation_angles = csc_matrix(np.diag(exponential_rotation_angles))
             evolved_state = evolution_matrix_left @ diagonal_matrix_rotation_angles @ evolution_matrix_right @ evolved_state
 
-        # Switch to {u^-, u^+} representation
+        # Switch back to {u, v} representation
         evolved_state_uv = self.Basis_EFM.T @ self.Basis_CMX @ evolved_state
 
         U_evolved = evolved_state_uv[N - 1::-1, :]
@@ -221,7 +221,7 @@ class Ising:
             diagonal_matrix_rotation_angles = csc_matrix(np.diag(exponential_rotation_angles))
             evolved_state = evolution_matrix_left @ diagonal_matrix_rotation_angles @ evolution_matrix_right @ evolved_state
 
-        # Switch to {u^-, u^+} representation
+        # Switch back to {u, v} representation
         evolved_state_uv = self.Basis_EFM.T @ self.Basis_CMX @ evolved_state
 
         U_evolved = evolved_state_uv[N - 1::-1, :]
