@@ -5,8 +5,7 @@ from sklearn.linear_model import LinearRegression
 from scipy import stats
 import json
 
-
-def plot_KZ_scaling(N_values, filename):
+def plot_KZ_scaling(L_values, filename):
 
     with open(filename, 'r') as f:
 
@@ -45,15 +44,15 @@ def plot_KZ_scaling(N_values, filename):
     plt.tick_params(axis='both', which='minor', direction='in', length=2.2, width=0.1, bottom=True, top=True, left=True, right=True)
 
     # Loop for main plot
-    for j in range(len(N_values)):
-        N = N_values[j]
+    for j in range(len(L_values)):
+        L = L_values[j]
 
-        TTime_values = data[f"{N}"]["tot_time"]
-        Density_values = data[f"{N}"]["density"]
+        TTime_values = data[f"{L}"]["tot_time"]
+        Density_values = data[f"{L}"]["density"]
 
-        plt.plot(TTime_values, Density_values, marker=marker[j], markersize=markersize[j], markeredgewidth=markeredgewidth[j], label=rf'$N = {N}$', alpha=1.0, linewidth=0.35)
+        plt.plot(TTime_values, Density_values, marker=marker[j], markersize=markersize[j], markeredgewidth=markeredgewidth[j], label=rf'$L = {L}$', alpha=1.0, linewidth=0.35)
 
-    # Linear regression for max N
+    # Linear regression for max L
 
     T_min = 11
     T_max = 26
@@ -96,7 +95,7 @@ def plot_KZ_scaling(N_values, filename):
     y_values = a * x_values + b
     x_values = 10 ** x_values
     y_values = 10 ** y_values
-    plt.plot(x_values, y_values, linestyle='--', color='navy', label=rf'lin fit ${max(N_values)}$, $a={a:.2f}({confidence_interval * 100 :.0f})$', linewidth=1.3)
+    plt.plot(x_values, y_values, linestyle='--', color='navy', label=rf'lin fit ${max(L_values)}$, $a={a:.2f}({confidence_interval * 100 :.0f})$', linewidth=1.3)
 
 
     plt.axis((0.035, 1.3e03, 1e-06, 2*1e-01))
@@ -114,8 +113,8 @@ def plot_KZ_scaling(N_values, filename):
 
 if __name__ == '__main__':
 
-    N_values = [100, 200, 300, 400, 500, 1000]
+    L_values = [100, 200, 300, 400, 500, 1000]
 
     filename = "data/KZ_scaling_data.json"
 
-    plot_KZ_scaling(N_values, filename)
+    plot_KZ_scaling(L_values, filename)

@@ -7,13 +7,13 @@ g_i = 2.0
 
 dt = 0.01
 
-N = 1000
+L = 1000
 
 Delta_TTime = 4/3
 TTime_values = [Delta_TTime ** i for i in range(-10, 25)]
 Alpha_values = [0, 1/2, 1/4, 1/8, 1/16, 1/32] # alpha=0 represents homogeneous transition
 
-system = Ising(N, g_i, g_f)
+system = Ising(L, g_i, g_f)
 
 def compute_density_for_alpha(alpha):
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     # save data to a file
 
     data = dict(results)
-    filename = f"data/inhomo_test_log_data_{N}.json"
+    filename = f"data/inhomo_test_log_data_{L}.json"
 
     with open(filename, 'w') as f:
         json.dump(data, f)

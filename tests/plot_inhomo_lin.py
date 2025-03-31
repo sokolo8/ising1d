@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-def plot_inhomo_lin(N, Alpha_values, filename):
+def plot_inhomo_lin(L, Alpha_values, filename):
 
     with open(filename, 'r') as f:
 
@@ -62,15 +62,15 @@ def plot_inhomo_lin(N, Alpha_values, filename):
 
     plt.tight_layout(pad=0.2)
     plt.subplots_adjust(right=0.9)
-    plt.savefig(f'plots/inhomo_test_lin_plot_{N}.pdf')
+    plt.savefig(f'plots/inhomo_test_lin_plot_{L}.pdf')
 
     plt.close()
 
 if __name__ == '__main__':
 
     Alpha_values = [1/2, 1/4, 1/8, 1/16, 1/32] # 0 stands for homogeneous transition
-    N = 1000
+    L = 1000
 
-    filename = f"data/inhomo_test_lin_data_{N}.json"
+    filename = f"data/inhomo_test_lin_data_{L}.json"
 
-    plot_inhomo_lin(N, Alpha_values, filename)
+    plot_inhomo_lin(L, Alpha_values, filename)

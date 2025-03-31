@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FixedLocator, NullFormatter
 import json
 
-def plot_inhomo_log(N, Alpha_values, filename):
+def plot_inhomo_log(L, Alpha_values, filename):
 
     with open(filename, 'r') as f:
 
@@ -58,7 +58,7 @@ def plot_inhomo_log(N, Alpha_values, filename):
 
     plt.tight_layout(pad=0.2)
     plt.subplots_adjust(right=0.9)
-    plt.savefig(f'plots/inhomo_test_log_plot_{N}.pdf')
+    plt.savefig(f'plots/inhomo_test_log_plot_{L}.pdf')
 
     plt.close()
 
@@ -66,8 +66,8 @@ def plot_inhomo_log(N, Alpha_values, filename):
 if __name__ == '__main__':
 
     Alpha_values = [0, 1/2, 1/4, 1/8, 1/16, 1/32] # 0 stands for homogeneous transition
-    N = 1000
+    L = 1000
 
-    filename = f"data/inhomo_test_log_data_{N}.json"
+    filename = f"data/inhomo_test_log_data_{L}.json"
 
-    plot_inhomo_log(N, Alpha_values, filename)
+    plot_inhomo_log(L, Alpha_values, filename)

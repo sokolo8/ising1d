@@ -14,8 +14,8 @@ class Ising_Error(Exception):
 
 class Ising:
 
-    def __init__(self, N, g_i, g_f, boundary='OBC'):
-        self.N = N
+    def __init__(self, L, g_i, g_f, boundary='OBC'):
+        self.L = L
         self.g_i = g_i
         self.g_f = g_f
         self.boundary = boundary
@@ -25,55 +25,55 @@ class Ising:
 
     def _initialize_hamiltonian(self):
 
-        N = self.N
-        self.External_field_Matrix = csc_matrix((2 * N, 2 * N))
-        self.Basis_EFM = csc_matrix((2 * N, 2 * N))
-        self.Couplings_Matrix_X = csc_matrix((2 * N, 2 * N))
-        self.Basis_CMX = csc_matrix((2 * N, 2 * N))
+        L = self.L
+        self.External_field_Matrix = csc_matrix((2 * L, 2 * L))
+        self.Basis_EFM = csc_matrix((2 * L, 2 * L))
+        self.Couplings_Matrix_X = csc_matrix((2 * L, 2 * L))
+        self.Basis_CMX = csc_matrix((2 * L, 2 * L))
 
-        for i in range(2 * N):
-            self.External_field_Matrix[i, 2 * N - i - 1] = 2.0
+        for i in range(2 * L):
+            self.External_field_Matrix[i, 2 * L - i - 1] = 2.0
 
-        for i in range(N):
+        for i in range(L):
             self.Basis_EFM[i, i] = 1 / np.sqrt(2)
-            self.Basis_EFM[i + N, i + N] = -1 / np.sqrt(2)
-            self.Basis_EFM[i, 2 * N - i - 1] = 1 / np.sqrt(2)
-            self.Basis_EFM[i + N, N - i - 1] = 1 / np.sqrt(2)
+            self.Basis_EFM[i + L, i + L] = -1 / np.sqrt(2)
+            self.Basis_EFM[i, 2 * L - i - 1] = 1 / np.sqrt(2)
+            self.Basis_EFM[i + L, L - i - 1] = 1 / np.sqrt(2)
 
         if self.boundary=='OBC':
 
-            for i in range(0, N-1):
-                self.Couplings_Matrix_X[i, 2 * N - i - 2] = -2.0
-                self.Couplings_Matrix_X[N + i, N - i - 2] = -2.0
+            for i in range(0, L-1):
+                self.Couplings_Matrix_X[i, 2 * L - i - 2] = -2.0
+                self.Couplings_Matrix_X[L + i, L - i - 2] = -2.0
 
-            for i in range(0, N-1):
-                self.Basis_CMX[i, 2 * N - 2 * i - 3] = 1 / np.sqrt(2)
-                self.Basis_CMX[i, 2 * N - 2 * i - 2] = 1 / np.sqrt(2)
-                self.Basis_CMX[N + i, 2 * i + 1] = 1 / np.sqrt(2)
-                self.Basis_CMX[N + i, 2 * i + 2] = -1 / np.sqrt(2)
+            for i in range(0, L-1):
+                self.Basis_CMX[i, 2 * L - 2 * i - 3] = 1 / np.sqrt(2)
+                self.Basis_CMX[i, 2 * L - 2 * i - 2] = 1 / np.sqrt(2)
+                self.Basis_CMX[L + i, 2 * i + 1] = 1 / np.sqrt(2)
+                self.Basis_CMX[L + i, 2 * i + 2] = -1 / np.sqrt(2)
 
-            self.Basis_CMX[N - 1, 0] = 1
-            self.Basis_CMX[2 * N - 1, 2 * N - 1] = 1
+            self.Basis_CMX[L - 1, 0] = 1
+            self.Basis_CMX[2 * L - 1, 2 * L - 1] = 1
 
         if self.boundary=='PBC':
 
-            for i in range(0, N-1):
-                self.Couplings_Matrix_X[i, 2 * N - i - 2] = -2.0
-                self.Couplings_Matrix_X[N + i, N - i - 2] = -2.0
+            for i in range(0, L-1):
+                self.Couplings_Matrix_X[i, 2 * L - i - 2] = -2.0
+                self.Couplings_Matrix_X[L + i, L - i - 2] = -2.0
 
-            self.Couplings_Matrix_X[N - 1, 2 * N - 1] = -2.0
-            self.Couplings_Matrix_X[2 * N - 1, N - 1] = -2.0
+            self.Couplings_Matrix_X[L - 1, 2 * L - 1] = -2.0
+            self.Couplings_Matrix_X[2 * L - 1, L - 1] = -2.0
 
-            for i in range(0, N-1):
-                self.Basis_CMX[i, 2 * N - 2 * i - 2] = 1 / np.sqrt(2)
-                self.Basis_CMX[i, 2 * N - 2 * i - 1] = 1 / np.sqrt(2)
-                self.Basis_CMX[N + i, 2 * i + 2] = 1 / np.sqrt(2)
-                self.Basis_CMX[N + i, 2 * i + 3] = -1 / np.sqrt(2)
+            for i in range(0, L-1):
+                self.Basis_CMX[i, 2 * L - 2 * i - 2] = 1 / np.sqrt(2)
+                self.Basis_CMX[i, 2 * L - 2 * i - 1] = 1 / np.sqrt(2)
+                self.Basis_CMX[L + i, 2 * i + 2] = 1 / np.sqrt(2)
+                self.Basis_CMX[L + i, 2 * i + 3] = -1 / np.sqrt(2)
 
-            self.Basis_CMX[N - 1, 0] = 1 / np.sqrt(2)
-            self.Basis_CMX[N - 1, 1] = 1 / np.sqrt(2)
-            self.Basis_CMX[2 * N - 1, 0] = 1 / np.sqrt(2)
-            self.Basis_CMX[2 * N - 1, 1] = -1 / np.sqrt(2)
+            self.Basis_CMX[L - 1, 0] = 1 / np.sqrt(2)
+            self.Basis_CMX[L - 1, 1] = 1 / np.sqrt(2)
+            self.Basis_CMX[2 * L - 1, 0] = 1 / np.sqrt(2)
+            self.Basis_CMX[2 * L - 1, 1] = -1 / np.sqrt(2)
 
         # Compute eigenvalues of Couplings matrix
 
@@ -90,34 +90,34 @@ class Ising:
         # Compute the initial state in {u^-, u^+} representation
 
         self.Initial_H = self.External_field_Matrix * self.g_i + self.Couplings_Matrix_X
-        self.initial_spectrum, self.initial_state = eigsh(self.Initial_H, k=self.N, which='LA')
+        self.initial_spectrum, self.initial_state = eigsh(self.Initial_H, k=self.L, which='LA')
 
     def _compute_final_state(self):
 
         # Compute the final state in {u^-, u^+} representation
 
         self.final_H = self.External_field_Matrix * self.g_f + self.Couplings_Matrix_X
-        self.final_spectrum, self.final_state = eigsh(self.final_H, k=self.N, which='LA')
+        self.final_spectrum, self.final_state = eigsh(self.final_H, k=self.L, which='LA')
 
         # Switch back to {u, v} representation
 
         final_state_uv = self.Basis_EFM @ self.final_state
 
-        self.U_final = final_state_uv[self.N - 1::-1, :]
-        self.V_final = final_state_uv[self.N:2 * self.N, :]
+        self.U_final = final_state_uv[self.L - 1::-1, :]
+        self.V_final = final_state_uv[self.L:2 * self.L, :]
 
     def homo_evolution(self, TTime, dt):
 
         Pi = np.pi
-        Num = round(TTime / dt)
+        N = round(TTime / dt)
 
         g_i = self.g_i
         g_f = self.g_f
-        N = self.N
+        L = self.L
 
-        while Num < 1000:
+        while N < 1000:
             dt = dt / 2
-            Num = round(TTime / dt)
+            N = round(TTime / dt)
 
         def g(t):
             if -Pi / 2.0 <= Pi / 2.0 - dt * t * Pi / TTime <= Pi / 2.0:
@@ -137,9 +137,9 @@ class Ising:
         # prepare the state in the convenient basis
         evolved_state = self.Basis_CMX.T @ self.initial_state
 
-        for step in tqdm(range(Num)):
+        for step in tqdm(range(N)):
             # Calculate the complex phase
-            magnetic_field_values = [g(step + 1) for _ in range(N)]
+            magnetic_field_values = [g(step + 1) for _ in range(L)]
             rotation_angles = -2j * dt * np.flip(magnetic_field_values)
             concatenated_rotation_angles = np.concatenate((rotation_angles, -np.flip(rotation_angles)))
             exponential_rotation_angles = np.exp(concatenated_rotation_angles)
@@ -151,8 +151,8 @@ class Ising:
         # Switch back to {u, v} representation
         evolved_state_uv = self.Basis_EFM.T @ self.Basis_CMX @ evolved_state
 
-        U_evolved = evolved_state_uv[N - 1::-1, :]
-        V_evolved = evolved_state_uv[N:2 * N, :]
+        U_evolved = evolved_state_uv[L - 1::-1, :]
+        V_evolved = evolved_state_uv[L:2 * L, :]
 
         term1 = np.transpose(U_evolved) @ self.V_final @ np.transpose(np.conjugate(self.V_final)) @ np.conjugate(U_evolved)
         term2 = np.transpose(U_evolved) @ self.V_final @ np.transpose(np.conjugate(self.U_final)) @ np.conjugate(V_evolved)
@@ -162,11 +162,11 @@ class Ising:
         sum_matrix = term1 + term2 + term3 + term4
 
         Number_of_kinks = sum_matrix.diagonal().sum()
-        Density_of_kinks = Number_of_kinks / N
+        Density_of_kinks = Number_of_kinks / L
 
         Energy = sum(sum_matrix.diagonal() * self.final_spectrum) - 1/2 * sum(self.final_spectrum)
         Energy_GS = - 1/2 * sum(self.final_spectrum)
-        Delta_Energy_per_bond = (Energy - Energy_GS) / N
+        Delta_Energy_per_bond = (Energy - Energy_GS) / L
 
         return np.real(Density_of_kinks), np.real(Delta_Energy_per_bond)
     
@@ -177,18 +177,18 @@ class Ising:
 
         g_i = self.g_i
         g_f = self.g_f
-        N = self.N
+        L = self.L
 
         Pi = np.pi
 
-        Num = round(TTime / dt)
+        N = round(TTime / dt)
 
-        while Num < 1000:
+        while N < 1000:
             dt = dt / 2
-            Num = round(TTime / dt)
+            N = round(TTime / dt)
 
-        R = (N - 1) / 2
-        coords = [i - R for i in range(N)]
+        R = (L - 1) / 2
+        coords = [i - R for i in range(L)]
         v = Pi / (TTime * alpha) + np.sqrt(2) * R / TTime
 
         def g(t, n):
@@ -210,9 +210,9 @@ class Ising:
         # prepare the state in the convenient basis
         evolved_state = self.Basis_CMX.T @ self.initial_state
 
-        for step in tqdm(range(Num)):
+        for step in tqdm(range(N)):
             # Calculate the complex phase
-            magnetic_field_values = [g(step + 1, j + 1) for j in range(N)]
+            magnetic_field_values = [g(step + 1, j + 1) for j in range(L)]
             rotation_angles = -2j * dt * np.flip(magnetic_field_values)
             concatenated_rotation_angles = np.concatenate((rotation_angles, -np.flip(rotation_angles)))
             exponential_rotation_angles = np.exp(concatenated_rotation_angles)
@@ -224,8 +224,8 @@ class Ising:
         # Switch back to {u, v} representation
         evolved_state_uv = self.Basis_EFM.T @ self.Basis_CMX @ evolved_state
 
-        U_evolved = evolved_state_uv[N - 1::-1, :]
-        V_evolved = evolved_state_uv[N:2 * N, :]
+        U_evolved = evolved_state_uv[L - 1::-1, :]
+        V_evolved = evolved_state_uv[L:2 * L, :]
 
         term1 = np.transpose(U_evolved) @ self.V_final @ np.transpose(np.conjugate(self.V_final)) @ np.conjugate(U_evolved)
         term2 = np.transpose(U_evolved) @ self.V_final @ np.transpose(np.conjugate(self.U_final)) @ np.conjugate(V_evolved)
@@ -235,11 +235,11 @@ class Ising:
         sum_matrix = term1 + term2 + term3 + term4
 
         Number_of_kinks = sum_matrix.diagonal().sum()
-        Density_of_kinks = Number_of_kinks / N
+        Density_of_kinks = Number_of_kinks / L
 
         Energy = sum(sum_matrix.diagonal() * self.final_spectrum) - 1/2 * sum(self.final_spectrum)
         Energy_GS = - 1/2 * sum(self.final_spectrum)
-        Delta_Energy_per_bond = (Energy - Energy_GS) / N
+        Delta_Energy_per_bond = (Energy - Energy_GS) / L
 
         return np.real(Density_of_kinks), np.real(Delta_Energy_per_bond)
     
@@ -247,7 +247,7 @@ class Ising:
     def compute_energy_per_bond_GS(self):
         """Computes observables per bond of final Hamiltonian at g = g_f"""
 
-        N = self.N
+        L = self.L
         g_f = self.g_f
 
         U = self.U_final
@@ -260,32 +260,32 @@ class Ising:
 
         E_ZZ.append(- 2 * term1[0, 1] - 2 * term2[1, 0])
 
-        for i in range(1, N - 2):
+        for i in range(1, L - 2):
             E_ZZ.append(- 2 * term1[i, i+1] - 2 * term2[i+1, i])
 
-        E_ZZ.append(- 2 * term1[N-2, N-1] - 2 * term2[N-1, N-2])
+        E_ZZ.append(- 2 * term1[L-2, L-1] - 2 * term2[L-1, L-2])
 
         E_X = []
 
-        for i in range(N):
+        for i in range(L):
             E_X.append(2 * g_f * term1[i, i] - g_f)
 
         E = []
 
         E.append(E_X[0] + E_X[1] / 2 + E_ZZ[0])
 
-        for i in range(1, N - 2):
+        for i in range(1, L - 2):
             E.append(E_X[i] / 2 + E_X[i+1] / 2 + E_ZZ[i])
 
-        E.append(E_X[N-2] / 2 + E_X[N-1] + E_ZZ[N-2])
+        E.append(E_X[L-2] / 2 + E_X[L-1] + E_ZZ[L-2])
 
         return E, E_ZZ, E_X
     
     def compute_energy_GS(self):
         """Computes energy of final Hamiltonian at g = g_f"""
 
-        N = self.N
-        Energy = -1/2 * sum(self.final_spectrum) / N
+        L = self.L
+        Energy = -1/2 * sum(self.final_spectrum) / L
 
         return Energy
 
@@ -294,13 +294,13 @@ if __name__ == '__main__':
     g_i = 2
     g_f = 1
 
-    N = 100
+    L = 100
 
     TTime = 100
     dt = 0.01
     alpha = 1/8
 
-    system = Ising(N, g_i, g_f)
+    system = Ising(L, g_i, g_f)
 
     print(system.compute_energy_GS())
 

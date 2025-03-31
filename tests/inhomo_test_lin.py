@@ -7,13 +7,13 @@ g_f = 1.0
 g_i = 2.0
 
 dt = 0.01
-N = 1000
+L = 1000
 
 Delta_v = 0.2
 v_values = [0.2 * i for i in range(2, 50 + 1)]
 Alpha_values = [0, 1/2, 1/4, 1/8, 1/16, 1/32] # 0 represents homogeneous transition
 
-system = Ising(N, g_i, g_f)
+system = Ising(L, g_i, g_f)
 
 def compute_density_for_alpha(alpha):
 
@@ -32,7 +32,7 @@ def compute_density_for_alpha(alpha):
 
         for v in v_values:
             print(f'total_time = {v}')
-            R = (N - 1) / 2
+            R = (L - 1) / 2
             TTime = np.pi / (v * alpha) + np.sqrt(2) * R / v
             Density_values.append(system.inhomo_evolution(TTime, dt, alpha))
 
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     # save data to a file
 
     data = dict(results)
-    filename = f"data/inhomo_test_lin_data_{N}.json"
+    filename = f"data/inhomo_test_lin_data_{L}.json"
 
     with open(filename, 'w') as f:
 
