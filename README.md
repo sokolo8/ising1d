@@ -4,7 +4,7 @@ This repository contains a fast and accurate simulation of the **1D Ising model 
 
 ---
 
-## Documentation [Open on GitHub](./docs/documentation.ipynb)
+## Documentation: [Click](./docs/documentation.ipynb)
 
 ---
 
